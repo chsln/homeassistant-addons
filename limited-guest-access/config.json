@@ -1,9 +1,15 @@
 {
   "name": "Limited guest access",
-  "version": "0.2.3",
+  "version": "0.2.4",
   "slug": "limited_guest_access",
   "description": "Allow guests to access limited functions",
-  "arch": ["armhf", "armv7", "aarch64", "amd64", "i386"],
+  "arch": [
+    "armhf",
+    "armv7",
+    "aarch64",
+    "amd64",
+    "i386"
+  ],
   "boot": "auto",
   "init": false,
   "options": {

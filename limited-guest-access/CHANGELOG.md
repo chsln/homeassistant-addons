@@ -1,3 +1,6 @@
+## [0.2.4] - 2026-05-07
+- upgrade to php8.4
+
 ## [0.2.3] - 2025-11-05
 ### Security
 - Added exponential backoff for failed login attempts to prevent brute-force attacks
