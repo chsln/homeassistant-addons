@@ -1,3 +1,6 @@
+## [0.2.5] - 2026-05-06
+- fixed docker build error (blank BUILD_FROM)
+
 ## [0.2.4] - 2026-05-07
 - upgrade to php8.4
 
