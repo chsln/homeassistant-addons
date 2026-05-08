@@ -248,6 +248,8 @@ class Actions
     {
         $ch = curl_init(self::API_URL . 'services');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Authorization: Bearer {$_SERVER['SUPERVISOR_TOKEN']}"
         ]);
@@ -262,6 +264,8 @@ class Actions
     {
         $ch = curl_init(self::API_URL . 'states');
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Authorization: Bearer {$_SERVER['SUPERVISOR_TOKEN']}"
         ]);

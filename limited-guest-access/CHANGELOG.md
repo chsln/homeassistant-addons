@@ -1,3 +1,11 @@
+## [0.2.6] - 2026-05-08
+### Security
+- Capped `last_used` action history at 50 entries to prevent unbounded JSON file growth and potential OOM crashes
+- Added cURL connect (3s) and transfer (10s) timeouts to all Home Assistant Supervisor API calls to prevent hung PHP-FPM workers when the supervisor is slow or unreachable
+- Fixed multiple XSS vulnerabilities in the user interface (unescaped `performedAction`, `friendly_name`, and action IDs)
+- Added HTML-safe flags to `json_encode` in the admin panel to prevent script breakout
+- Added hidden `link` field to the login form to ensure session persistence on submission
+
 ## [0.2.5] - 2026-05-06
 - fixed docker build error (blank BUILD_FROM)
 

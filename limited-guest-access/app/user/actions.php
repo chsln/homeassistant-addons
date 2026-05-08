@@ -201,6 +201,10 @@ class Actions {
             $actions->$actionId->last_used = [];
         }
         $actions->$actionId->last_used[] = $time->format('U');
+        // Prevent unbounded growth that can cause OOM; keep only the last 50 entries
+        if (count($actions->$actionId->last_used) > 50) {
+            $actions->$actionId->last_used = array_slice($actions->$actionId->last_used, -50);
+        }
         file_put_contents(self::DATA_DIR . $this->getLink() . '.json', json_encode($actions));
 
         return $this;
@@ -227,6 +231,8 @@ class Actions {
         curl_setopt($ch, CURLOPT_CUSTOMREQUEST, "POST");
         curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Authorization: Bearer {$_SERVER['SUPERVISOR_TOKEN']}",
             'Content-Type: application/json',
@@ -301,6 +307,8 @@ class Actions {
     {
         $ch = curl_init(self::API_URL . 'states/'. $entityId);
         curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+        curl_setopt($ch, CURLOPT_CONNECTTIMEOUT, 3);
+        curl_setopt($ch, CURLOPT_TIMEOUT, 10);
         curl_setopt($ch, CURLOPT_HTTPHEADER, [
             "Authorization: Bearer {$_SERVER['SUPERVISOR_TOKEN']}"
         ]);

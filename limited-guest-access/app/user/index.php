@@ -142,6 +142,7 @@ if ($actions->passwordProtected && !$actions->authenticated) :?>
             </div>
         <?php endif; ?>
         <form action='?' method="post">
+            <input type="hidden" name="link" value="<?= htmlspecialchars($actions->getLink() ?? '') ?>">
             <input name='password' type="password" placeholder="password">
             <input type="submit" value="Login" class="login-button" />
         </form>
@@ -151,7 +152,7 @@ else:
     $availableActions = $actions->getFilteredActions();
 
     if (isset($_GET['performedAction']) && !is_null($_GET['performedAction'])) {
-        echo '<h1>Performing: ' . urldecode($_GET['performedAction']) . "</h1>";
+        echo '<h1>Performing: ' . htmlspecialchars(urldecode($_GET['performedAction'])) . "</h1>";
     }
 
     if (!$actions) {
@@ -177,7 +178,7 @@ else:
             $classes = implode(' ', $classes);
         ?>
         <a  class="<?= $classes;?>"
-            href="?action=<?= $id ?>"><?= $data->friendly_name ?></a>
+            href="?action=<?= htmlspecialchars($id) ?>"><?= htmlspecialchars($data->friendly_name) ?></a>
         <?php
     endforeach;
 endif;

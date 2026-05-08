@@ -1,6 +1,6 @@
 {
   "name": "Limited guest access",
-  "version": "0.2.5",
+  "version": "0.2.7",
   "slug": "limited_guest_access",
   "description": "Allow guests to access limited functions",
   "arch": [

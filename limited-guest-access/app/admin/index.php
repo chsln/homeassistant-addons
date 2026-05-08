@@ -545,7 +545,7 @@ if (isset($_REQUEST['action']) && ($_REQUEST['action'] == 'addAction' || $_REQUE
         </form>
     </div>
     <script type="text/javascript">
-      let data = <?= (isset($data) && isset($data->{$_GET['action_id']})) ? json_encode($data->{$_GET['action_id']}) : '[]' ?>;
+      let data = <?= (isset($data) && isset($data->{$_GET['action_id']})) ? json_encode($data->{$_GET['action_id']}, JSON_HEX_TAG | JSON_HEX_AMP) : '[]' ?>;
       function fillData() {
         Object.keys(data).forEach(function (key) {
           if (document.querySelector('[name=' + key + ']')) {
