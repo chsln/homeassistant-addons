@@ -142,7 +142,7 @@ if ($actions->passwordProtected && !$actions->authenticated) :?>
             </div>
         <?php endif; ?>
         <form action='?' method="post">
-            <input type="hidden" name="link" value="<?= htmlspecialchars($actions->getLink() ?? '') ?>">
+            <input type="hidden" name="link" value="<?= htmlspecialchars(filter_input(INPUT_GET, 'link', FILTER_SANITIZE_FULL_SPECIAL_CHARS) ?? '') ?>">
             <input name='password' type="password" placeholder="password">
             <input type="submit" value="Login" class="login-button" />
         </form>
