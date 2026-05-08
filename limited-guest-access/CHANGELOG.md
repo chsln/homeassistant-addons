@@ -1,3 +1,7 @@
+## [0.2.6a] - 2026-05-08
+### bugfix
+- Fixed build error
+
 ## [0.2.6] - 2026-05-08
 ### Security
 - Capped `last_used` action history at 50 entries to prevent unbounded JSON file growth and potential OOM crashes
